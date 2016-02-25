@@ -3,6 +3,11 @@ import platform
 from authy import __version__, AuthyFormatException
 from urllib import quote
 
+
+# platform.platform() doesn't work on GAE, so we monkey-patch it out here:
+platform.platform = lambda aliased=0, terse=0: 'GAE'
+
+
 # import json
 try:
     import json
